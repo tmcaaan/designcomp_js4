@@ -9,6 +9,15 @@ header img {
   padding-left: 10px;
 }
 
+@media screen and (max-width: 768px) {
+
+  /* headerはそのまま横 */
+  header {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
 /* ハンバーガ―メニューの見た目部分の設定 */
 .hamburger-menu {
   display: block;
@@ -152,15 +161,23 @@ hamburger-navigationIDにactiveクラスが付与されたら、
 
 .pick-img {
   display: flex;
-  overflow-x: auto;      /* 横スクロール */
+  overflow-x: auto;
   gap: 20px;             
   padding-bottom: 10px;
+  scroll-behavior: smooth;
 }
 
 .pick-img img {
   width: 450px;
   flex-shrink: 0; 
   scroll-snap-align: start;
+}
+
+@media screen and (max-width: 768px) {
+
+  .pick-img img {
+    width: 280px;
+  }
 }
 
 
@@ -224,6 +241,22 @@ hamburger-navigationIDにactiveクラスが付与されたら、
   font-size: 12px;
   text-align: right;
   color: #888;
+}
+
+@media screen and (max-width: 768px) {
+
+  .feature-list {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .feature-content {
+    padding: 15px;
+  }
+
+  #feature {
+    padding: 60px 0;
+  }
 }
 
 /* コンタクト */
@@ -306,37 +339,10 @@ footer p{
 
 @media screen and (max-width: 768px) {
 
-  /* headerはそのまま横 */
-  header {
-    flex-direction: row;
-    align-items: center;
-  }
-
-  /* pickupは横スク維持 */
-  .pick-img img {
-    width: 280px;
-  }
-
-  /* featureは縦OK＋見た目調整 */
-  .feature-list {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  /* カードの余白を詰める */
-  .feature-content {
-    padding: 15px;
-  }
-
   /* contactは縦 */
   .contact-wrapper {
     flex-direction: column;
     gap: 40px;
-  }
-
-  /* セクション余白調整 */
-  #feature {
-    padding: 60px 0;
   }
 
   #contact {

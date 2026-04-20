@@ -28,3 +28,38 @@
     });
   });
 
+
+/*=================================================
+  PICK UP（横スクロール自動ループ）
+==================================================*/
+
+// 変数宣言
+// 横スクロールの要素
+const pickUp = document.querySelector(".pick-img");
+
+// 自動スクロールの間隔（ミリ秒）
+const intervalTime = 3000;
+
+// スクロール量
+const scrollAmount = 450;
+
+// 自動スクロール処理
+function autoScroll() {
+
+  // 端まで行ったら最初に戻す
+  if (pickUp.scrollLeft + pickUp.clientWidth >= pickUp.scrollWidth) {
+    pickUp.scrollTo({
+      left: 0,
+      behavior: "smooth"
+    });
+  } else {
+    // それ以外は右に流す
+    pickUp.scrollBy({
+      left: scrollAmount,
+      behavior: "smooth"
+    });
+  }
+}
+
+// 繰り返し実行
+setInterval(autoScroll, intervalTime);
