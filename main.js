@@ -29,37 +29,42 @@
   });
 
 
-/*=================================================
-  PICK UP（横スクロール自動ループ）
-==================================================*/
+/*=========================================
+  PICK UP 自動中央スクロール
+=========================================*/
 
-// 変数宣言
 // 横スクロールの要素
 const pickUp = document.querySelector(".pick-img");
 
-// 自動スクロールの間隔（ミリ秒）
+// 画像一覧を取得
+const slides = pickUp.querySelectorAll("img");
+
+// 自動スクロールの間隔
 const intervalTime = 3000;
 
-// スクロール量
-const scrollAmount = 450;
+// 今どの画像か
+let currentIndex = 0;
 
-// 自動スクロール処理
 function autoScroll() {
 
-  // 端まで行ったら最初に戻す
-  if (pickUp.scrollLeft + pickUp.clientWidth >= pickUp.scrollWidth) {
-    pickUp.scrollTo({
-      left: 0,
-      behavior: "smooth"
-    });
-  } else {
-    // それ以外は右に流す
-    pickUp.scrollBy({
-      left: scrollAmount,
-      behavior: "smooth"
-    });
+  const slide = slides[currentIndex];
+
+  // 画像を画面中央にする位置を計算
+  const offset =
+    slide.offsetLeft -
+    (pickUp.clientWidth / 2 - slide.clientWidth / 2);
+
+  pickUp.scrollTo({
+    left: offset,
+    behavior: "smooth"
+  });
+
+  currentIndex++;
+
+  // 最後までいったら最初に戻す
+  if (currentIndex >= slides.length) {
+    currentIndex = 0;
   }
 }
 
-// 繰り返し実行
 setInterval(autoScroll, intervalTime);
