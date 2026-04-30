@@ -167,12 +167,12 @@ hamburger-navigationIDにactiveクラスが付与されたら、
   display: flex;
   overflow-x: auto;
   gap: 55px;             
-  padding-bottom: 0 calc(50% - 225px);  /*中央に来るための余白*/
+  padding-bottom: 0 calc(50% - 150px);  /*中央に来るための余白*/
   scroll-behavior: smooth;
 }
 
 .pick-img img {
-  width: 450px;
+  width: 300px;
   flex-shrink: 0; 
   scroll-snap-align: start;
 }
@@ -208,14 +208,14 @@ hamburger-navigationIDにactiveクラスが付与されたら、
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit,minmax(300px, 1fr));
+  gap: 26px;
 }
 
 /* カード */
 .feature-item {
   background: #fff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  box-shadow: 0 0 8px 4px #ccc;
   transition: 0.3s;
 }
 
@@ -225,14 +225,14 @@ hamburger-navigationIDにactiveクラスが付与されたら、
 
 /* 画像 */
 .feature-item img {
-  width: 400px;
-  height: 270px;
+  width: 100%;
+  height: auto;
   display: block;
 }
 
 /* 中身 */
 .feature-content {
-  padding: 20px;
+  padding: 30px;
 }
 
 .category {
